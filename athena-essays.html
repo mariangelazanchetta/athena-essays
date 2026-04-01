@@ -3,31 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guest Essays — Mariangela Zanchetta × Athena Alliance</title>
+  <title>Guest Essays | Mariangela Zanchetta x Athena Alliance</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --navy: #0F1C2E;
-      --navy-mid: #162236;
-      --navy-light: #1e2f45;
-      --cream: #F4EFE6;
-      --cream-dim: rgba(244,239,230,0.65);
-      --gold-1: #B8923C;
-      --gold-2: #C8A44D;
-      --gold-3: #D9B86A;
-      --gold: linear-gradient(90deg, #B8923C 0%, #C8A44D 50%, #D9B86A 100%);
+      --bg:       #EEE4D7;
+      --bg-card:  #F8F3EC;
+      --bg-card2: #E6D9C8;
+      --dark:     #231C15;
+      --rust:     #AF4820;
+      --rust-deep:#8C3418;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--navy);
-      color: var(--cream);
+      background: var(--bg);
+      color: var(--dark);
       font-family: 'Cormorant Garamond', serif;
       font-weight: 300;
       min-height: 100vh;
@@ -35,19 +31,17 @@
       flex-direction: column;
     }
 
-    /* ── BACKGROUND TEXTURE ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 70% 50% at 15% 20%, rgba(184,146,60,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 70% at 85% 80%, rgba(184,146,60,0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 40% at 10% 15%, rgba(175,72,32,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 90% 85%, rgba(175,72,32,0.03) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── LAYOUT ── */
     .page {
       position: relative;
       z-index: 1;
@@ -60,7 +54,7 @@
     /* ── HEADER ── */
     .header {
       text-align: center;
-      margin-bottom: 4.5rem;
+      margin-bottom: 4rem;
       animation: fadeUp 0.9s ease both;
     }
 
@@ -70,7 +64,8 @@
       font-weight: 400;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold-2);
+      color: var(--rust);
+      opacity: 0.85;
       margin-bottom: 1.8rem;
       display: flex;
       align-items: center;
@@ -84,7 +79,8 @@
       display: block;
       height: 1px;
       width: 40px;
-      background: var(--gold);
+      background: var(--rust);
+      opacity: 0.4;
     }
 
     .header-name {
@@ -92,7 +88,7 @@
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 300;
       line-height: 1.0;
-      color: var(--cream);
+      color: var(--dark);
       letter-spacing: -0.01em;
       margin-bottom: 0.5rem;
     }
@@ -100,26 +96,28 @@
     .header-name em {
       font-style: italic;
       font-weight: 300;
-      opacity: 0.6;
       font-size: 0.58em;
       display: block;
       letter-spacing: 0.06em;
+      color: var(--rust);
+      opacity: 0.7;
     }
 
     .header-seam {
       display: block;
       height: 2px;
       width: 60px;
-      background: var(--gold);
+      background: var(--rust);
       margin: 1.8rem auto;
+      opacity: 0.45;
     }
 
     .header-desc {
       font-size: 1.05rem;
       font-style: italic;
       line-height: 1.65;
-      color: var(--cream);
-      opacity: 0.7;
+      color: var(--dark);
+      opacity: 0.75;
       max-width: 48ch;
       margin: 0 auto;
     }
@@ -134,37 +132,28 @@
     .essay {
       display: grid;
       grid-template-columns: 3fr 1fr;
-      background: var(--navy-mid);
+      background: var(--bg-card);
       position: relative;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      transition: background 0.3s;
+      border-left: 3px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
       animation: fadeUp 0.8s ease both;
     }
 
+    .essay:nth-child(2) { background: var(--bg-card2); }
     .essay:nth-child(1) { animation-delay: 0.15s; }
     .essay:nth-child(2) { animation-delay: 0.28s; }
     .essay:nth-child(3) { animation-delay: 0.41s; }
 
-    .essay::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--gold);
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 0.4s ease;
-    }
-
-    .essay:hover { background: var(--navy-light); }
-    .essay:hover::before { transform: scaleY(1); }
+    .essay:hover { border-left-color: var(--rust); }
+    .essay:nth-child(1):hover,
+    .essay:nth-child(3):hover { background: #EFE7DA; }
+    .essay:nth-child(2):hover { background: #DAC9B3; }
 
     .essay-body {
-      padding: 2.4rem 2.2rem 2.4rem 2.6rem;
+      padding: 2.4rem 2.2rem 2.4rem 2.4rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -173,17 +162,18 @@
 
     .essay-number {
       font-family: 'Cormorant', serif;
-      font-size: 5rem;
+      font-size: 3.8rem;
       font-weight: 300;
-      color: var(--cream);
-      opacity: 0.04;
+      color: var(--rust);
+      opacity: 0.06;
       line-height: 1;
       position: absolute;
-      right: 7rem;
+      left: 1rem;
       top: 50%;
       transform: translateY(-50%);
       pointer-events: none;
       user-select: none;
+      letter-spacing: -0.02em;
     }
 
     .essay-label {
@@ -191,8 +181,8 @@
       font-size: 0.6rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold-2);
-      opacity: 0.85;
+      color: var(--rust);
+      opacity: 0.95;
     }
 
     .essay-title {
@@ -200,21 +190,22 @@
       font-size: clamp(1.35rem, 2.5vw, 1.75rem);
       font-weight: 500;
       line-height: 1.1;
-      color: var(--cream);
+      color: var(--dark);
     }
 
     .essay-seam {
       display: block;
       height: 1px;
       width: 36px;
-      background: var(--gold);
+      background: var(--rust);
+      opacity: 0.35;
     }
 
     .essay-excerpt {
       font-size: 0.95rem;
       line-height: 1.7;
-      color: var(--cream);
-      opacity: 0.6;
+      color: var(--dark);
+      opacity: 0.82;
       max-width: 55ch;
     }
 
@@ -230,8 +221,8 @@
       font-size: 0.6rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--cream);
-      opacity: 0.35;
+      color: var(--dark);
+      opacity: 0.55;
     }
 
     .essay-cta {
@@ -239,8 +230,8 @@
       font-size: 0.62rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold-2);
-      opacity: 0.8;
+      color: var(--rust);
+      opacity: 0.7;
       transition: opacity 0.2s;
       display: flex;
       align-items: center;
@@ -256,13 +247,12 @@
 
     .essay:hover .essay-cta::after { transform: translateX(3px); }
 
-    /* Right glyph panel */
     .essay-glyph {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(15,28,46,0.4);
-      border-left: 1px solid rgba(200,164,77,0.08);
+      background: rgba(175, 72, 32, 0.04);
+      border-left: 1px solid rgba(175, 72, 32, 0.1);
       position: relative;
       overflow: hidden;
       min-height: 160px;
@@ -271,11 +261,11 @@
     .essay-glyph svg {
       width: 52px;
       height: 52px;
-      opacity: 0.12;
+      opacity: 0.15;
       transition: opacity 0.3s;
     }
 
-    .essay:hover .essay-glyph svg { opacity: 0.22; }
+    .essay:hover .essay-glyph svg { opacity: 0.3; }
 
     /* ── FOOTER ── */
     .footer {
@@ -289,9 +279,9 @@
       display: block;
       height: 1px;
       width: 40px;
-      background: var(--gold);
+      background: var(--rust);
       margin: 0 auto 2rem;
-      opacity: 0.5;
+      opacity: 0.3;
     }
 
     .footer-text {
@@ -299,7 +289,7 @@
       font-size: 0.62rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--dark);
       opacity: 0.3;
       margin-bottom: 1.2rem;
     }
@@ -316,35 +306,21 @@
       font-size: 0.64rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--cream);
+      color: var(--dark);
       text-decoration: none;
-      opacity: 0.45;
-      border-bottom: 1px solid rgba(200,164,77,0.2);
+      opacity: 0.4;
+      border-bottom: 1px solid rgba(175, 72, 32, 0.25);
       padding-bottom: 0.15rem;
       transition: opacity 0.2s, border-color 0.2s;
     }
 
-    .footer-link:hover { opacity: 0.85; border-color: var(--gold-2); }
+    .footer-link:hover { opacity: 0.8; border-color: var(--rust); }
 
-    /* Key SVG watermark */
-    .page-watermark {
-      position: fixed;
-      bottom: 3rem;
-      right: 3rem;
-      opacity: 0.06;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .page-watermark svg { width: 64px; height: 64px; }
-
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .page { padding: 3.5rem 1.4rem 4rem; }
       .essay { grid-template-columns: 1fr; }
@@ -356,34 +332,20 @@
 </head>
 <body>
 
-  <!-- Background watermark key -->
-  <div class="page-watermark">
-    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="22" cy="22" r="17" stroke="#C8A44D" stroke-width="2" fill="none"/>
-      <circle cx="22" cy="22" r="9" stroke="#C8A44D" stroke-width="1.5" fill="none"/>
-      <line x1="22" y1="39" x2="22" y2="62" stroke="#C8A44D" stroke-width="2"/>
-      <line x1="14" y1="52" x2="30" y2="52" stroke="#C8A44D" stroke-width="2"/>
-      <line x1="14" y1="60" x2="22" y2="60" stroke="#C8A44D" stroke-width="2"/>
-    </svg>
-  </div>
-
   <main class="page">
 
-    <!-- Header -->
     <header class="header">
       <p class="header-eyebrow">Guest Essays</p>
       <h1 class="header-name">
         Mariangela Zanchetta
-        <em>× Athena Alliance</em>
+        <em>x Athena Alliance</em>
       </h1>
       <span class="header-seam"></span>
-      <p class="header-desc">Three essays on leadership, identity, and the quiet human truths inside ambitious lives — written for Athena Alliance.</p>
+      <p class="header-desc">Three essays on leadership, identity, and the quiet human truths inside ambitious lives, written for Athena Alliance.</p>
     </header>
 
-    <!-- Essays -->
     <div class="essays">
 
-      <!-- Essay 1 -->
       <a class="essay" href="https://athenaalliance.com/blog/the-physiology-of-transition/" target="_blank" rel="noopener">
         <div class="essay-body">
           <div>
@@ -392,7 +354,7 @@
           <div>
             <h2 class="essay-title">The Physiology of Transition</h2>
             <span class="essay-seam" style="margin: 1rem 0; display:block;"></span>
-            <p class="essay-excerpt">For many leaders, real transition doesn't begin on a calendar. It begins in the body — in the quiet signals we're trained to override. On overdrive, collapse, and what it means to re-inhabit yourself.</p>
+            <p class="essay-excerpt">For many leaders, real transition does not begin on a calendar. It begins in the body, in the quiet signals we are trained to override. On overdrive, collapse, and what it means to re-inhabit yourself.</p>
           </div>
           <div class="essay-meta">
             <span class="essay-date">Athena Alliance</span>
@@ -401,19 +363,17 @@
         </div>
         <div class="essay-glyph">
           <span class="essay-number">I</span>
-          <!-- Body/nervous system glyph -->
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="26" cy="12" r="6" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="18" x2="26" y2="34" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="24" x2="16" y2="30" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="24" x2="36" y2="30" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="34" x2="18" y2="46" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="34" x2="34" y2="46" stroke="#C8A44D" stroke-width="1.5"/>
+            <circle cx="26" cy="12" r="6" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="18" x2="26" y2="34" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="24" x2="16" y2="30" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="24" x2="36" y2="30" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="34" x2="18" y2="46" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="34" x2="34" y2="46" stroke="#AF4820" stroke-width="1.5"/>
           </svg>
         </div>
       </a>
 
-      <!-- Essay 2 -->
       <a class="essay" href="https://athenaalliance.com/blog/standing-without-armor-reflections-from-athena-summit-san-francisco/" target="_blank" rel="noopener">
         <div class="essay-body">
           <div>
@@ -422,7 +382,7 @@
           <div>
             <h2 class="essay-title">Standing Without Armor</h2>
             <span class="essay-seam" style="margin: 1rem 0; display:block;"></span>
-            <p class="essay-excerpt">Reflections from the Athena Summit in San Francisco — on identity, power, capital, and the courage it takes to stand open in moments of genuine change. What happens when you stop performing strength.</p>
+            <p class="essay-excerpt">Reflections from the Athena Summit in San Francisco on identity, power, capital, and the courage it takes to stand open in moments of genuine change. What happens when you stop performing strength.</p>
           </div>
           <div class="essay-meta">
             <span class="essay-date">Athena Alliance</span>
@@ -431,16 +391,14 @@
         </div>
         <div class="essay-glyph">
           <span class="essay-number">II</span>
-          <!-- Open/armor glyph - shield outline open at top -->
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26 8 L40 14 L40 28 Q40 40 26 46 Q12 40 12 28 L12 14 Z" stroke="#C8A44D" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-            <circle cx="26" cy="27" r="5" stroke="#C8A44D" stroke-width="1.5" fill="none"/>
-            <line x1="26" y1="8" x2="26" y2="14" stroke="#C8A44D" stroke-width="1.5"/>
+            <path d="M26 8 L40 14 L40 28 Q40 40 26 46 Q12 40 12 28 L12 14 Z" stroke="#AF4820" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+            <circle cx="26" cy="27" r="5" stroke="#AF4820" stroke-width="1.5" fill="none"/>
+            <line x1="26" y1="8" x2="26" y2="14" stroke="#AF4820" stroke-width="1.5"/>
           </svg>
         </div>
       </a>
 
-      <!-- Essay 3 -->
       <a class="essay" href="https://athenaalliance.com/blog/learning-faster-than-your-role-changes/" target="_blank" rel="noopener">
         <div class="essay-body">
           <div>
@@ -449,7 +407,7 @@
           <div>
             <h2 class="essay-title">Learning Faster Than Your Role Changes</h2>
             <span class="essay-seam" style="margin: 1rem 0; display:block;"></span>
-            <p class="essay-excerpt">What happens when the role that shaped your expertise and identity disappears? On staying relevant not by consuming more, but by learning with intention — in a world where knowledge is infinite and attention is not.</p>
+            <p class="essay-excerpt">What happens when the role that shaped your expertise and identity disappears? On staying relevant not by consuming more, but by learning with intention in a world where knowledge is infinite and attention is not.</p>
           </div>
           <div class="essay-meta">
             <span class="essay-date">Athena Alliance</span>
@@ -458,22 +416,20 @@
         </div>
         <div class="essay-glyph">
           <span class="essay-number">III</span>
-          <!-- Learning/compass glyph -->
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="26" cy="26" r="18" stroke="#C8A44D" stroke-width="1.5" fill="none"/>
-            <circle cx="26" cy="26" r="3" stroke="#C8A44D" stroke-width="1.5" fill="none"/>
-            <line x1="26" y1="8" x2="26" y2="16" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="36" x2="26" y2="44" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="8" y1="26" x2="16" y2="26" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="36" y1="26" x2="44" y2="26" stroke="#C8A44D" stroke-width="1.5"/>
-            <line x1="26" y1="26" x2="34" y2="16" stroke="#C8A44D" stroke-width="2"/>
+            <circle cx="26" cy="26" r="18" stroke="#AF4820" stroke-width="1.5" fill="none"/>
+            <circle cx="26" cy="26" r="3" stroke="#AF4820" stroke-width="1.5" fill="none"/>
+            <line x1="26" y1="8" x2="26" y2="16" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="36" x2="26" y2="44" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="8" y1="26" x2="16" y2="26" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="36" y1="26" x2="44" y2="26" stroke="#AF4820" stroke-width="1.5"/>
+            <line x1="26" y1="26" x2="34" y2="16" stroke="#AF4820" stroke-width="2"/>
           </svg>
         </div>
       </a>
 
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <span class="footer-seam"></span>
       <p class="footer-text">More writing</p>
